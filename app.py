@@ -17,6 +17,7 @@ app.config["DATA_FILE"] = Path(__file__).parent / "data" / "workouts.json"
 EXERCISE_PATTERN = re.compile(r"^[A-Za-zÄÖÜäöü \-]{2,40}$")
 
 
+
 @app.after_request
 def set_security_headers(response):
     response.headers["Content-Security-Policy"] = "default-src 'self'; frame-ancestors 'none'"
