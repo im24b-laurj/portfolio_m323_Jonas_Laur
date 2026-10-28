@@ -12,6 +12,15 @@ class Workout:
     weight: float
 
 
+def volume(workout):
+    """Trainingsvolumen eines Eintrags: Sätze x Wiederholungen x Gewicht."""
+    return workout.sets * workout.reps * workout.weight
+
+
+def exercise_names(workouts):
+    return sorted({w.exercise for w in workouts})
+
+
 def parse_workout(raw):
     return Workout(
         date=date.fromisoformat(raw["date"]),

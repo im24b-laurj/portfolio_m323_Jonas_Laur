@@ -6,7 +6,8 @@ from pathlib import Path
 
 from flask import Flask, abort, redirect, render_template, request, session, url_for
 
-from workouts import Workout, load_workouts, personal_bests, save_workouts
+from workouts import (Workout, exercise_names, load_workouts, personal_bests,
+                      save_workouts, volume)
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
@@ -46,24 +47,18 @@ def index():
     if sort == "weight":
         result.sort(key=lambda w: w.weight, reverse=True)
     elif sort == "volume":
-        result.sort(key=lambda w: w.sets * w.reps * w.weight, reverse=True)
+        result.sort(key=volume, reverse=True)
     else:
         result.sort(key=lambda w: w.date, reverse=True)
 
     total = 0
     for w in result:
-        total += w.sets * w.reps * w.weight
-
-    exercises = []
-    for w in workouts:
-        if w.exercise not in exercises:
-            exercises.append(w.exercise)
-    exercises.sort()
+        total += volume(w)
 
     return render_template(
         "index.html",
         workouts=result,
-        exercises=exercises,
+        exercises=exercise_names(workouts),
         selected=exercise,
         sort=sort,
         total_volume=total,
@@ -114,7 +109,7 @@ def stats():
     days = []
     for w in workouts:
         if w.date.year == year and w.date.month == month_number:
-            total += w.sets * w.reps * w.weight
+            total += volume(w)
             if w.date not in days:
                 days.append(w.date)
 
