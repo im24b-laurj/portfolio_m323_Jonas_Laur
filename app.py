@@ -6,7 +6,7 @@ from pathlib import Path
 
 from flask import Flask, abort, redirect, render_template, request, session, url_for
 
-from workouts import (Workout, add_workout, exercise_names, filter_by_exercise,
+from workouts import (Workout, add_workout, exercise_names, exercise_progress, filter_by_exercise,
                       load_workouts, month_stats, personal_bests, save_workouts,
                       sort_workouts, total_volume)
 
@@ -103,7 +103,8 @@ def stats():
 @app.route("/bests")
 def bests():
     workouts = load_workouts(app.config["DATA_FILE"])
-    return render_template("bests.html", bests=personal_bests(workouts))
+    return render_template("bests.html", bests=personal_bests(workouts),
+                           progress=exercise_progress(workouts))
 
 
 if __name__ == "__main__":

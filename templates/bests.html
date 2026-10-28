@@ -7,4 +7,18 @@
     <tr><td>{{ exercise }}</td><td>{{ weight }} kg</td></tr>
     {% endfor %}
 </table>
+
+<h2>Fortschritt</h2>
+<p>Geschätztes Maximalgewicht (1RM) im ersten und im letzten Training.</p>
+<table>
+    <tr><th>Übung</th><th>Start</th><th>Aktuell</th><th>Veränderung</th></tr>
+    {% for p in progress %}
+    <tr>
+        <td>{{ p.exercise }}</td>
+        <td>{{ p.start_1rm }} kg</td>
+        <td>{{ p.current_1rm }} kg</td>
+        <td>{% if p.percent is none %}–{% else %}{{ '%+.1f' % p.percent }} %{% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}

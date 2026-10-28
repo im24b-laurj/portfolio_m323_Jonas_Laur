@@ -19,6 +19,13 @@ class MonthStats(NamedTuple):
     training_days: int
 
 
+class Progress(NamedTuple):
+    exercise: str
+    start_1rm: float
+    current_1rm: float
+    percent: float | None
+
+
 def volume(workout):
     """Trainingsvolumen eines Eintrags: Sätze x Wiederholungen x Gewicht."""
     return workout.sets * workout.reps * workout.weight
@@ -61,6 +68,46 @@ def month_stats(workouts, year, month):
         total_volume=reduce(lambda total, v: total + v, map(volume, in_month), 0),
         training_days=len(set(map(lambda w: w.date, in_month))),
     )
+
+
+def estimate_1rm(weight: float, reps: int) -> float:
+    """Geschätztes Maximalgewicht für eine Wiederholung (Epley-Formel)."""
+    if reps == 1:
+        return weight
+    return weight * (1 + reps / 30)
+
+
+def group_by_exercise(workouts: tuple[Workout, ...]) -> dict[str, tuple[Workout, ...]]:
+    groups = {}
+    for w in workouts:
+        groups[w.exercise] = groups.get(w.exercise, ()) + (w,)
+    return groups
+
+
+def first_and_last(entries: tuple[Workout, ...]) -> tuple[Workout, Workout]:
+    by_date = sorted(entries, key=lambda w: w.date)
+    return by_date[0], by_date[-1]
+
+
+def progress_percent(start: float, end: float) -> float | None:
+    if start == 0:
+        return None
+    return round((end - start) / start * 100, 1)
+
+
+def progress_for(exercise: str, entries: tuple[Workout, ...]) -> Progress | None:
+    if len(entries) < 2:
+        return None
+    first, last = first_and_last(entries)
+    start = estimate_1rm(first.weight, first.reps)
+    current = estimate_1rm(last.weight, last.reps)
+    return Progress(exercise, round(start, 1), round(current, 1), progress_percent(start, current))
+
+
+def exercise_progress(workouts: tuple[Workout, ...]) -> list[Progress]:
+    groups = group_by_exercise(workouts)
+    results = (progress_for(name, entries) for name, entries in groups.items())
+    return sorted((p for p in results if p is not None), key=lambda p: p.exercise)
 
 
 def parse_workout(raw):
