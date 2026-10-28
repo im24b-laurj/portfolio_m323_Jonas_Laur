@@ -2,7 +2,7 @@ import unittest
 from datetime import date
 
 from workouts import (Workout, add_workout, exercise_names, filter_by_exercise,
-                      month_stats, sort_workouts, total_volume, volume)
+                      month_stats, personal_bests, sort_workouts, total_volume, volume)
 
 BENCH_1 = Workout(date(2026, 10, 1), "Bankdrücken", 3, 8, 60)
 SQUAT = Workout(date(2026, 10, 1), "Kniebeugen", 3, 5, 80)
@@ -43,6 +43,18 @@ class WorkoutsTest(unittest.TestCase):
 
     def test_month_stats_without_entries(self):
         self.assertEqual(month_stats(WORKOUTS, 2025, 1), (0, 0))
+
+    def test_personal_bests_sorted_by_weight(self):
+        self.assertEqual(personal_bests(WORKOUTS),
+                         [("Kreuzheben", 100), ("Kniebeugen", 80), ("Bankdrücken", 62.5)])
+
+    def test_personal_bests_same_weight_alphabetical(self):
+        rows = personal_bests((Workout(date(2026, 10, 1), "Rudern", 3, 10, 80), SQUAT))
+        self.assertEqual(rows, [("Kniebeugen", 80), ("Rudern", 80)])
+
+    def test_personal_bests_bodyweight(self):
+        pullup = Workout(date(2026, 10, 1), "Klimmzüge", 3, 8, 0)
+        self.assertEqual(personal_bests((pullup,)), [("Klimmzüge", 0)])
 
 
 if __name__ == "__main__":

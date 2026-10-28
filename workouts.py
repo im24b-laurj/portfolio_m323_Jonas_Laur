@@ -93,16 +93,15 @@ def save_workouts(path, workouts):
         json.dump([workout_to_dict(w) for w in workouts], file, indent=2, ensure_ascii=False)
 
 
+def best_sort_key(item):
+    """Schwerste Übung zuerst, bei Gleichstand alphabetisch."""
+    exercise, weight = item
+    return -weight, exercise
+
+
 def personal_bests(workouts):
-    exercises = []
+    bests = {}
     for w in workouts:
-        if w.exercise not in exercises:
-            exercises.append(w.exercise)
-    bests = []
-    for exercise in exercises:
-        best = 0
-        for w in workouts:
-            if w.exercise == exercise and w.weight > best:
-                best = w.weight
-        bests.append((exercise, best))
-    return bests
+        if w.exercise not in bests or w.weight > bests[w.exercise]:
+            bests[w.exercise] = w.weight
+    return sorted(bests.items(), key=best_sort_key)
