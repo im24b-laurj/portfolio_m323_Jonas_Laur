@@ -6,8 +6,9 @@ from pathlib import Path
 
 from flask import Flask, abort, redirect, render_template, request, session, url_for
 
-from workouts import (Workout, exercise_names, load_workouts, personal_bests,
-                      save_workouts, volume)
+from workouts import (Workout, add_workout, exercise_names, filter_by_exercise,
+                      load_workouts, month_stats, personal_bests, save_workouts,
+                      sort_workouts, total_volume)
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
@@ -39,21 +40,7 @@ def index():
     exercise = request.args.get("exercise", "")
     sort = request.args.get("sort", "date")
 
-    result = []
-    for w in workouts:
-        if exercise == "" or w.exercise == exercise:
-            result.append(w)
-
-    if sort == "weight":
-        result.sort(key=lambda w: w.weight, reverse=True)
-    elif sort == "volume":
-        result.sort(key=volume, reverse=True)
-    else:
-        result.sort(key=lambda w: w.date, reverse=True)
-
-    total = 0
-    for w in result:
-        total += volume(w)
+    result = sort_workouts(filter_by_exercise(workouts, exercise), sort)
 
     return render_template(
         "index.html",
@@ -61,7 +48,7 @@ def index():
         exercises=exercise_names(workouts),
         selected=exercise,
         sort=sort,
-        total_volume=total,
+        total_volume=total_volume(result),
         today=date.today().isoformat(),
     )
 
@@ -87,8 +74,7 @@ def add():
         abort(400)
 
     workouts = load_workouts(app.config["DATA_FILE"])
-    workouts.append(workout)
-    save_workouts(app.config["DATA_FILE"], workouts)
+    save_workouts(app.config["DATA_FILE"], add_workout(workouts, workout))
     return redirect(url_for("index"))
 
 
@@ -102,22 +88,15 @@ def stats():
         except ValueError:
             abort(400)
     else:
-        latest = max(w.date for w in workouts)
+        latest = max((w.date for w in workouts), default=date.today())
         year, month_number = latest.year, latest.month
 
-    total = 0
-    days = []
-    for w in workouts:
-        if w.date.year == year and w.date.month == month_number:
-            total += volume(w)
-            if w.date not in days:
-                days.append(w.date)
-
+    result = month_stats(workouts, year, month_number)
     return render_template(
         "stats.html",
         month=f"{year}-{month_number:02d}",
-        total_volume=total,
-        training_days=len(days),
+        total_volume=result.total_volume,
+        training_days=result.training_days,
     )
 
 
