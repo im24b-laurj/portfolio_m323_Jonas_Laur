@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Einträge</h1>
+
+<form method="get" class="filter">
+    <select name="exercise">
+        <option value="">Alle Übungen</option>
+        {% for e in exercises %}
+        <option value="{{ e }}" {% if e == selected %}selected{% endif %}>{{ e }}</option>
+        {% endfor %}
+    </select>
+    <select name="sort">
+        <option value="date" {% if sort == 'date' %}selected{% endif %}>Neueste zuerst</option>
+        <option value="weight" {% if sort == 'weight' %}selected{% endif %}>Gewicht</option>
+        <option value="volume" {% if sort == 'volume' %}selected{% endif %}>Volumen</option>
+    </select>
+    <button type="submit">Anzeigen</button>
+</form>
+
+<table>
+    <tr><th>Datum</th><th>Übung</th><th>Sätze</th><th>Wdh.</th><th>Gewicht</th></tr>
+    {% for w in workouts %}
+    <tr>
+        <td>{{ w.date.strftime('%d.%m.%Y') }}</td>
+        <td>{{ w.exercise }}</td>
+        <td>{{ w.sets }}</td>
+        <td>{{ w.reps }}</td>
+        <td>{{ w.weight }} kg</td>
+    </tr>
+    {% endfor %}
+</table>
+<p>Gesamtvolumen: <strong>{{ '%.0f' % total_volume }} kg</strong></p>
+
+<h2>Neuer Eintrag</h2>
+<form method="post" action="{{ url_for('add') }}" class="add">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="date" name="date" value="{{ today }}" required>
+    <input type="text" name="exercise" placeholder="Übung" list="exercise-list" required maxlength="40">
+    <datalist id="exercise-list">
+        {% for e in exercises %}<option value="{{ e }}">{% endfor %}
+    </datalist>
+    <input type="number" name="sets" placeholder="Sätze" min="1" max="20" required>
+    <input type="number" name="reps" placeholder="Wdh." min="1" max="100" required>
+    <input type="number" name="weight" placeholder="kg" min="0" max="500" step="0.5" required>
+    <button type="submit">Speichern</button>
+</form>
+{% endblock %}

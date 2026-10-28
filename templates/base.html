@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trainingslog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <strong>Trainingslog</strong>
+    <a href="{{ url_for('index') }}">Einträge</a>
+    <a href="{{ url_for('stats') }}">Statistik</a>
+    <a href="{{ url_for('bests') }}">Bestleistungen</a>
+</nav>
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

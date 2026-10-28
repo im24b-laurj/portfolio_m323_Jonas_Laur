@@ -1,0 +1,324 @@
+[
+  {
+    "date": "2026-09-02",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 80.0
+  },
+  {
+    "date": "2026-09-02",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 35.0
+  },
+  {
+    "date": "2026-09-04",
+    "exercise": "Kreuzheben",
+    "sets": 3,
+    "reps": 5,
+    "weight": 100.0
+  },
+  {
+    "date": "2026-09-04",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 60.0
+  },
+  {
+    "date": "2026-09-07",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 60.0
+  },
+  {
+    "date": "2026-09-07",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 50.0
+  },
+  {
+    "date": "2026-09-09",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 80.0
+  },
+  {
+    "date": "2026-09-09",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 35.0
+  },
+  {
+    "date": "2026-09-11",
+    "exercise": "Kreuzheben",
+    "sets": 3,
+    "reps": 5,
+    "weight": 100.0
+  },
+  {
+    "date": "2026-09-11",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 60.0
+  },
+  {
+    "date": "2026-09-14",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 62.5
+  },
+  {
+    "date": "2026-09-14",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 52.5
+  },
+  {
+    "date": "2026-09-16",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 82.5
+  },
+  {
+    "date": "2026-09-16",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 36.25
+  },
+  {
+    "date": "2026-09-18",
+    "exercise": "Kreuzheben",
+    "sets": 3,
+    "reps": 5,
+    "weight": 105.0
+  },
+  {
+    "date": "2026-09-18",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 62.5
+  },
+  {
+    "date": "2026-09-21",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 62.5
+  },
+  {
+    "date": "2026-09-21",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 52.5
+  },
+  {
+    "date": "2026-09-23",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 82.5
+  },
+  {
+    "date": "2026-09-23",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 36.25
+  },
+  {
+    "date": "2026-09-25",
+    "exercise": "Kreuzheben",
+    "sets": 3,
+    "reps": 5,
+    "weight": 105.0
+  },
+  {
+    "date": "2026-09-25",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 62.5
+  },
+  {
+    "date": "2026-09-28",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 65.0
+  },
+  {
+    "date": "2026-09-28",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 55.0
+  },
+  {
+    "date": "2026-09-30",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 85.0
+  },
+  {
+    "date": "2026-09-30",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 37.5
+  },
+  {
+    "date": "2026-10-02",
+    "exercise": "Kreuzheben",
+    "sets": 3,
+    "reps": 5,
+    "weight": 110.0
+  },
+  {
+    "date": "2026-10-02",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 65.0
+  },
+  {
+    "date": "2026-10-05",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 65.0
+  },
+  {
+    "date": "2026-10-05",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 55.0
+  },
+  {
+    "date": "2026-10-07",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 85.0
+  },
+  {
+    "date": "2026-10-07",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 37.5
+  },
+  {
+    "date": "2026-10-12",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 67.5
+  },
+  {
+    "date": "2026-10-12",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 57.5
+  },
+  {
+    "date": "2026-10-14",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 87.5
+  },
+  {
+    "date": "2026-10-14",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 38.75
+  },
+  {
+    "date": "2026-10-16",
+    "exercise": "Kreuzheben",
+    "sets": 3,
+    "reps": 5,
+    "weight": 115.0
+  },
+  {
+    "date": "2026-10-16",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 67.5
+  },
+  {
+    "date": "2026-10-19",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 67.5
+  },
+  {
+    "date": "2026-10-19",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 57.5
+  },
+  {
+    "date": "2026-10-21",
+    "exercise": "Kniebeugen",
+    "sets": 4,
+    "reps": 6,
+    "weight": 87.5
+  },
+  {
+    "date": "2026-10-21",
+    "exercise": "Schulterdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 38.75
+  },
+  {
+    "date": "2026-10-23",
+    "exercise": "Kreuzheben",
+    "sets": 3,
+    "reps": 5,
+    "weight": 115.0
+  },
+  {
+    "date": "2026-10-23",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 67.5
+  },
+  {
+    "date": "2026-10-26",
+    "exercise": "Bankdrücken",
+    "sets": 3,
+    "reps": 8,
+    "weight": 70.0
+  },
+  {
+    "date": "2026-10-26",
+    "exercise": "Rudern",
+    "sets": 3,
+    "reps": 10,
+    "weight": 60.0
+  }
+]

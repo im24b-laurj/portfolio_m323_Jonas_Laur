@@ -1,0 +1,47 @@
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    color: #222;
+    background: #fafafa;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: #2d4059;
+    color: white;
+}
+
+nav a {
+    color: white;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid #ddd;
+}
+
+form.filter, form.add {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+input[type=number] {
+    width: 5rem;
+}

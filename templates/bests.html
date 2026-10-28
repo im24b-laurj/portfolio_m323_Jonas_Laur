@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Bestleistungen</h1>
+<table>
+    <tr><th>Übung</th><th>Bestes Gewicht</th></tr>
+    {% for exercise, weight in bests %}
+    <tr><td>{{ exercise }}</td><td>{{ weight }} kg</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

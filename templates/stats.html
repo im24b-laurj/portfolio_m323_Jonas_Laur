@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Statistik</h1>
+<form method="get" class="filter">
+    <input type="month" name="month" value="{{ month }}">
+    <button type="submit">Anzeigen</button>
+</form>
+<p>Trainingstage im Monat: <strong>{{ training_days }}</strong></p>
+<p>Gesamtvolumen im Monat: <strong>{{ '%.0f' % total_volume }} kg</strong></p>
+{% endblock %}
